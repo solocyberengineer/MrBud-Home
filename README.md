@@ -1,4 +1,4 @@
-# MrBud-Home
+# MrBud Home
 Welcome to my page!!
 
 ## Description
