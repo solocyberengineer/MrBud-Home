@@ -30,7 +30,7 @@ PORT   STATE SERVICE
 Step 2:
 ###### Put the targets-ip in your browser
 ![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/567a2646-c5d3-405a-880d-950d6b992eff)
-###### 1. The first thing to notice is that the url has changed(we were redirected)<br>2. The second thing to notice is that the url has a get parameter "?page=home.html", This could be a possible vulnerability.
+###### 1. The first thing to notice is that the url has changed(we were redirected)<br>2. The second thing to notice is that the url has a HTTP GET parameter "?page=home.html", This could be a possible vulnerability.
 ##### Lets Test for Local File Inclusion(LFI)
 ###### lets use curl on index.php file to check
 ```
@@ -56,7 +56,7 @@ if (isset($page) && preg_match("/^[a-z]/", $page)) {
 
 ?>
 ```
-###### 1. As we read the function 'sanitize_input' it removes '../' and then removes './'<br>2. We see the 'sanitize_input' being used after 'preg_match' php built-in function that searches for expressions in strings<br>3. So is going to avoid us from inputting symbols, numbers before letters.
+###### 1. As we read the function 'sanitize_input' it removes '../' and then removes './'<br>2. We see the 'sanitize_input' being used after 'preg_match' php built-in function that searches for expressions in strings<br>3. So it is going to avoid us from inputting symbols, numbers before letters.
 ###### However we could still do this
 ```
 curl http://target-ip/index.php?page=file:///var/www/html/index.php
