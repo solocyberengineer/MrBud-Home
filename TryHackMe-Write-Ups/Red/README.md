@@ -26,7 +26,7 @@ PORT   STATE SERVICE
 22/tcp open  ssh
 80/tcp open  http
 ```
-###### Ah, we can assume port 80 is a http
+###### Ah, we can assume port 80 is a http server
 Step 2:
 ###### Put the targets-ip in your browser
 ![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/567a2646-c5d3-405a-880d-950d6b992eff)
