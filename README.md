@@ -13,4 +13,4 @@ I'm here to post Write-Ups for TryHackMe
 ```
 [![badge](https://tryhackme-badges.s3.amazonaws.com/MrBud.png)](https://tryhackme.com/p/MrBud "MrBud's TryHackMe Profile")<br>
 ## Write-Ups
-> [Red v5](./TryHackMe-Write-Ups/Red)
+> [Red](./TryHackMe-Write-Ups/Red)
