@@ -235,7 +235,7 @@ drwxr-x--- 2 red  red   4096 Aug 14  2022 .
 drwxr-xr-x 4 root red   4096 Aug 17  2022 ..
 -rwsr-xr-x 1 root root 31032 Aug 14  2022 pkexec
 ```
-###### Wowwwwww😲, pkexec! Lets check its version to see if we can exploit it
+###### Wowwwwww😲, pkexec! with the suid bit! Lets check its version to see if we can exploit it
 ```
 ./pkexec --version
 ```
