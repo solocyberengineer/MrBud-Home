@@ -191,7 +191,7 @@ ls -la /etc/hosts
 ```
 -rw-r--rw- 1 root adm 242 Jul 19 11:15 /etc/hosts
 ```
-###### 0.0, Itsss writable, but can only append. This file resets too upon some command so watch out.
+###### 👀, Itsss writable, but can only append. This file resets too upon some command so watch out.
 Step 6:
 ###### Use netcat(nc/netcat) to listen for and connections on port 9001
 ```
@@ -221,7 +221,7 @@ drwxr-x--- 2 red  red  4096 Aug 14  2022 .git
 -rw-rw-r-- 1 red  red    75 Aug 14  2022 .selected_editor
 -rw------- 1 red  red     0 Aug 17  2022 .viminfo
 ```
-###### A '.git' folder 0.0
+###### A '.git' folder 👀
 ```
 ls -la ~/.git
 ```
