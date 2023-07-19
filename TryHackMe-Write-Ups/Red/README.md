@@ -56,7 +56,7 @@ if (isset($page) && preg_match("/^[a-z]/", $page)) {
 
 ?>
 ```
-###### 1. As we read the function 'sanitize_input' it removes '../' and then removes './'<br>2. We see the 'sanitize_input' being used after 'preg_match' a php built-in function that searches for expressions in strings<br>3. So its not going to allow us from inputting symbols, numbers before letters and paths such as '/var/www/html/index.php'.
+###### 1. As we read the function 'sanitize_input' it removes '../' and then removes './'<br>2. We see the 'sanitize_input' being used after 'preg_match' a php built-in function that searches for expressions in strings<br>3. So its not going to allow us to input symbols, numbers before letters and paths such as '/var/www/html/index.php'.
 ###### However we could still do this
 ```
 curl http://target-ip/index.php?page=file:///var/www/html/index.php
