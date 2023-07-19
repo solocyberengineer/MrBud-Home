@@ -74,7 +74,7 @@ blue:x:1000:1000:blue:/home/blue:/bin/bash
 lxd:x:998:100::/var/snap/lxd/common/lxd:/bin/false
 red:x:1001:1001::/home/red:/bin/bash
 ```
-###### Ha ha, we get users blue and red
+###### Ha ha, we get users, blue and red.
 Step 3:<br>
 ###### Lets try to get get files in users directories
 ```
