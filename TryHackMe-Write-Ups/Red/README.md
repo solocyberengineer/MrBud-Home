@@ -243,7 +243,7 @@ drwxr-xr-x 4 root red   4096 Aug 17  2022 ..
 ```
 pkexec version 0.105
 ```
-###### If we search on google for a exploit you will come across 'CVE-2021-4034'. Since there is no compiler on the target, we can't compile it on the target. What we do find if we research futher is that we find a python script of the exploit. Remember we cannot write files in home directory so we need to download it into /tmp directory. So on in our terminal locate the file directory and start a http server so that we could download the file from the target.
+###### If we search on google for a exploit you will come across 'CVE-2021-4034'. Since there is no compiler on the target, we can't compile it on the target. What we do find if we research futher is that we find a python script version of the exploit. Remember we cannot write files in home directory so we need to download it into /tmp directory. So on in our terminal locate the file directory and start a http server so that we could download the file from the target.
 ###### Before we start. First open the CVE exploit file and edit the path to the pkexec elf program on the targets machine.
 ```python3
 .....
