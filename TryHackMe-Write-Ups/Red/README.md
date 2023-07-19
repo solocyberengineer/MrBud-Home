@@ -128,6 +128,9 @@ sup3r_p@s$w0rd!1234
 hydra -l blue -P passlist.txt target-ip ssh
 ```
 ###### Nice!, Now lets login again.
+![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/1f62432b-7e2b-4403-b50c-1c34125a84e6)
+###### It worked!
+
 Step 5:
 ###### These bash random texts from red are annoying. Anyway lets stay strong mentally.<br>Use ps command and check whats processes are running
 ```
