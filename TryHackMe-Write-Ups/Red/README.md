@@ -205,7 +205,7 @@ nc -nvlp 9001
 ```
 echo 'your-ip redrules.thm' >> /etc/hosts
 ```
-###### Nice we got into reds account :)
+###### Wait for it... Nice we got into reds account :)
 ![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/bd84a204-4cef-4465-adca-e8327bf19f76)
 ###### Lets check whats in the home directory
 ```
