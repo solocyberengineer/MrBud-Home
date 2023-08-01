@@ -188,7 +188,8 @@ sudo php -r "system('/bin/bash');"
 ```
 ![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/19e05a9b-2486-48b3-bb61-4f7ed3f4c7f6)
 ###### And you finally Got ROOOTTT🥳🕶️
-![image](https://tryhackme-images.s3.amazonaws.com/room-icons/1968fc18c7598f797954065d05a7f8f0.png)
+![image](https://github.com/solocyberengineer/MrBud-Home/assets/90530825/283109ac-d754-4482-a887-05c3da4c1241)
+
 
 
 
