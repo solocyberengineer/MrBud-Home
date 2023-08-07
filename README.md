@@ -11,7 +11,7 @@ drwxr-xr-x  3 root   root   4096 Jul  6 14:31 ..
 $ cat Task.txt
 I'm here to post Write-Ups for TryHackMe
 ```
-[![badge](https://tryhackme-badges.s3.amazonaws.com/MrBud.png)](https://tryhackme.com/p/MrBud "MrBud's TryHackMe Profile")<br>
+[![badge](https://tryhackme-badges.s3.amazonaws.com/MrBud.png?branch=master&kill_cache=1)](https://tryhackme.com/p/MrBud "MrBud's TryHackMe Profile")<br>
 ## Write-Ups
 > [Red](./TryHackMe-Write-Ups/Red)<br>
 > [Forgotten Implant](./TryHackMe-Write-Ups/Forgotten%20Implant)
