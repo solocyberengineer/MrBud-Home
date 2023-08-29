@@ -15,4 +15,3 @@ I'm here to post Write-Ups for TryHackMe
 ## Write-Ups
 > [Red](./TryHackMe-Write-Ups/Red)<br>
 > [Forgotten Implant](./TryHackMe-Write-Ups/Forgotten%20Implant)
-> this is some text to test if this git commit works
